@@ -27,7 +27,8 @@ public class ClientSTF {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+           //sendFile("C:/Utilisateurs/mathieu/Bureau/test.txt","127.0.0.1");
+           recieveFile("blabla.txt","test.txt","127.0.0.1");
     }
 
     public static int sendFile(String nomFichier, String addrDestStr) {
@@ -91,7 +92,7 @@ public class ClientSTF {
                 data = sc.nextLine();
                 count++;
             }
-            ok = sc.hasNextLine();
+            ok = sc.hasNextByte();
             opCode = "\0\3";
             msg = opCode + data;
             buffer = msg.getBytes();
@@ -160,16 +161,19 @@ public class ClientSTF {
 
         //ouverture du fichier de reception
         File fichierLocal = new File(nomFichierLocal);
-        if (!fichierLocal.exists()) {
+        /*if (!fichierLocal.exists()) {
             try {
                 fichierLocal.createNewFile();
             } catch (IOException ex) {
                 Logger.getLogger(ClientSTF.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("erreur");
                 return 1;
             }
         }
-        else{return 7;}
-
+        else{return 7;}*/
+        
+        System.out.println("pas erreur");
+        
         FileWriter fw = null;
         try {
             fw = new FileWriter(fichierLocal.getAbsoluteFile());
